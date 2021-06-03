@@ -13,29 +13,33 @@
 #include "defs/flide_defs.hpp"
 
 enum class FlideTokens : const u8 {
-    Begin,
-    End,
+    Begin ,
+    End   ,
 
-    Label,
-    Wait ,
+    Label ,
+    Wait  ,
 
-    New  ,
+    New   ,
 
-    Left ,
+    Left  ,
+    Center,
+    Right ,
 
     Undef
 };
 
 static std::vector<std::string> keywords = {
-    "Begin",
-    "End"  ,
+    "Begin" ,
+    "End"   ,
 
-    "Label",
-    "Wait" ,
+    "Label" ,
+    "Wait"  ,
 
-    "New"  ,
+    "New"   ,
 
-    "Left"
+    "Left"  ,
+    "Center",
+    "Right"
 };
 
 class Flide_Parser {
@@ -46,7 +50,9 @@ class Flide_Parser {
 
          is_wait  = false,
 
-         is_left  = false;
+         is_left  = false,
+         is_center= false,
+         is_right = false;
 
     std::string label_data;
 
@@ -69,6 +75,10 @@ public:
     void Parse   () noexcept;
 
     void Left    (const std::string& data)
+                    noexcept;
+    void Center  (const std::string& data)
+                    noexcept;
+    void Right   (const std::string& data)
                     noexcept;
 };
 

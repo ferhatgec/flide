@@ -1,11 +1,8 @@
 Begin
-    Label "An example of Label"
+    Label "An example of Label" Wait 1 New
+    Label "An example of Wait & New" Wait 1 New
 
-    Wait 1 New
-
-    Label "An example of Wait & New"
-
-    Left  "An example of left aligned Label"
-
-    Wait 1 New
+    Left   "An example of left aligned Label" Wait 1 New
+    Center "An example of center aligned Label" Wait 1 New
+    Right  "An example of right aligned Label" Wait 1 New
 End

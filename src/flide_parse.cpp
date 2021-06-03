@@ -54,7 +54,10 @@ void Flide_Parser::Parse() noexcept {
     #endif // defined(__linux__)
 
     for(auto& token : this->tokens) {
-        if(this->is_label || this->is_left) {
+        if(this->is_label
+            || this->is_left
+            || this->is_center
+            || this->is_right) {
             if(token.length() <= 1) { continue; }
             if(is_data) {
                 if(token.back() == '"') {
@@ -62,9 +65,21 @@ void Flide_Parser::Parse() noexcept {
 
                     if(this->is_left) {
                         this->Left(this->label_data);
+                    }
+                    else if(this->is_center) {
+                        this->Center(this->label_data);
+                    }
+                    else if(this->is_right) {
+                        this->Right(this->label_data);
                     } else { println(this->label_data); }
+
                     this->label_data.erase();
-                    this->is_label = this->is_data = this->is_left = false; continue;
+
+                    this->is_label      =
+                        this->is_data   =
+                        this->is_left   =
+                        this->is_center =
+                        this->is_right  = false; continue;
                 }
             }
 
@@ -74,8 +89,17 @@ void Flide_Parser::Parse() noexcept {
 
                     if(this->is_left) {
                         this->Left(token);
+                    }
+                    else if(this->is_center) {
+                        this->Center(token);
+                    }
+                    else if(this->is_right) {
+                        this->Right(token);
                     } else { println(token); }
-                    this->is_label = this->is_left = false; continue;
+                    this->is_label      =
+                        this->is_left   =
+                        this->is_center =
+                        this->is_right  = false; continue;
                 } this->is_data = true;
 
                 this->label_data
@@ -123,6 +147,14 @@ void Flide_Parser::Parse() noexcept {
                 this->is_left = true; break;
             }
 
+            case FlideTokens::Center: {
+                this->is_center = true; break;
+            }
+
+            case FlideTokens::Right: {
+                this->is_right = true; break;
+            }
+
             default: {
                 break;
             }
@@ -133,4 +165,15 @@ void Flide_Parser::Parse() noexcept {
 void Flide_Parser::Left(const std::string& data) noexcept {
     println(data);
     for(auto i = 0; i < this->w; i++) { print(' '); }
+}
+
+void Flide_Parser::Center(const std::string& data) noexcept {
+    for(auto i = 0; i < (this->w / 2); i++) { print(' ');
+    } println(data);
+    for(auto i = 0; i < (this->w / 2); i++) { print(' '); }
+}
+
+void Flide_Parser::Right(const std::string& data) noexcept {
+    for(auto i = 0; i < this->w; i++) { print(' '); }
+    println(data);
 }
