@@ -1,0 +1,9 @@
+Begin
+    Label "An example of Label"
+
+    Wait 1 New
+
+    Label "An example of Wait & New"
+
+    Wait 1 New
+End
