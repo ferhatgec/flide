@@ -5,5 +5,7 @@ Begin
 
     Label "An example of Wait & New"
 
+    Left  "An example of left aligned Label"
+
     Wait 1 New
 End

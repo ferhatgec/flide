@@ -21,6 +21,8 @@ enum class FlideTokens : const u8 {
 
     New  ,
 
+    Left ,
+
     Undef
 };
 
@@ -31,7 +33,9 @@ static std::vector<std::string> keywords = {
     "Label",
     "Wait" ,
 
-    "New"
+    "New"  ,
+
+    "Left"
 };
 
 class Flide_Parser {
@@ -40,12 +44,16 @@ class Flide_Parser {
          is_label = false,
          is_data  = false,
 
-         is_wait  = false;
+         is_wait  = false,
+
+         is_left  = false;
 
     std::string label_data;
 
     Flide init;
     std::vector<std::string> tokens;
+
+    u32 w = 0, h = 0;
 public:
     Flide_Parser () = default;
 
@@ -59,6 +67,9 @@ public:
     void Tokenize(Flide init)
                     noexcept;
     void Parse   () noexcept;
+
+    void Left    (const std::string& data)
+                    noexcept;
 };
 
 #endif // FLIDE_FLIDE_PARSE_HPP
