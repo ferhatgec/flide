@@ -5,4 +5,6 @@ Begin
     Left   "An example of left aligned Label" Wait 1 New
     Center "An example of center aligned Label" Wait 1 New
     Right  "An example of right aligned Label" Wait 1 New
+
+    CenterXY "An example of center (xy) aligned Label" Wait 1 New
 End

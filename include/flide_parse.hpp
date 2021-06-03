@@ -25,34 +25,40 @@ enum class FlideTokens : const u8 {
     Center,
     Right ,
 
+    CenterXY,
+
     Undef
 };
 
 static std::vector<std::string> keywords = {
-    "Begin" ,
-    "End"   ,
+    "Begin"   ,
+    "End"     ,
 
-    "Label" ,
-    "Wait"  ,
+    "Label"   ,
+    "Wait"    ,
 
-    "New"   ,
+    "New"     ,
 
-    "Left"  ,
-    "Center",
-    "Right"
+    "Left"    ,
+    "Center"  ,
+    "Right"   ,
+
+    "CenterXY"
 };
 
 class Flide_Parser {
-    bool is_begin = false,
+    bool is_begin = false    ,
 
-         is_label = false,
-         is_data  = false,
+         is_label = false    ,
+         is_data  = false    ,
 
-         is_wait  = false,
+         is_wait  = false    ,
 
-         is_left  = false,
-         is_center= false,
-         is_right = false;
+         is_left  = false    ,
+         is_center= false    ,
+         is_right = false    ,
+
+         is_center_xy = false;
 
     std::string label_data;
 
@@ -79,6 +85,9 @@ public:
     void Center  (const std::string& data)
                     noexcept;
     void Right   (const std::string& data)
+                    noexcept;
+
+    void CenterXY(const std::string& data)
                     noexcept;
 };
 

@@ -57,7 +57,8 @@ void Flide_Parser::Parse() noexcept {
         if(this->is_label
             || this->is_left
             || this->is_center
-            || this->is_right) {
+            || this->is_right
+            || this->is_center_xy) {
             if(token.length() <= 1) { continue; }
             if(is_data) {
                 if(token.back() == '"') {
@@ -71,15 +72,20 @@ void Flide_Parser::Parse() noexcept {
                     }
                     else if(this->is_right) {
                         this->Right(this->label_data);
-                    } else { println(this->label_data); }
+                    }
+                    else if(this->is_center_xy) {
+                        this->CenterXY(this->label_data);
+                    }
+                    else { println(this->label_data); }
 
                     this->label_data.erase();
 
-                    this->is_label      =
-                        this->is_data   =
-                        this->is_left   =
-                        this->is_center =
-                        this->is_right  = false; continue;
+                    this->is_label        =
+                        this->is_data     =
+                        this->is_left     =
+                        this->is_center   =
+                        this->is_right    =
+                        this->is_center_xy= false; continue;
                 }
             }
 
@@ -95,11 +101,16 @@ void Flide_Parser::Parse() noexcept {
                     }
                     else if(this->is_right) {
                         this->Right(token);
+                    }
+                    else if(this->is_center_xy) {
+                        this->CenterXY(token);
                     } else { println(token); }
-                    this->is_label      =
-                        this->is_left   =
-                        this->is_center =
-                        this->is_right  = false; continue;
+
+                    this->is_label        =
+                        this->is_left     =
+                        this->is_center   =
+                        this->is_right    =
+                        this->is_center_xy= false; continue;
                 } this->is_data = true;
 
                 this->label_data
@@ -155,6 +166,10 @@ void Flide_Parser::Parse() noexcept {
                 this->is_right = true; break;
             }
 
+            case FlideTokens::CenterXY: {
+                this->is_center_xy = true; break;
+            }
+
             default: {
                 break;
             }
@@ -176,4 +191,9 @@ void Flide_Parser::Center(const std::string& data) noexcept {
 void Flide_Parser::Right(const std::string& data) noexcept {
     for(auto i = 0; i < this->w; i++) { print(' '); }
     println(data);
+}
+
+void Flide_Parser::CenterXY(const std::string &data) noexcept {
+    for(auto i = 0; i < (this->h / 2); i++) { print('\n'); }
+    this->Center(data);
 }
