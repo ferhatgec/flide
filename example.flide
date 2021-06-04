@@ -1,4 +1,8 @@
 Begin
+    DisableCursor
+
+    Label "Cursor disabled."
+
     Label "An example of Label" Wait 1 New
     Label "An example of Wait & New" Wait 1 New
 
@@ -7,4 +11,5 @@ Begin
     Right  "An example of right aligned Label" Wait 1 New
 
     CenterXY "An example of center (xy) aligned Label" Wait 1 New
+
 End

@@ -170,6 +170,10 @@ void Flide_Parser::Parse() noexcept {
                 this->is_center_xy = true; break;
             }
 
+            case FlideTokens::DisableCursor: {
+                disable_cursor(); break;
+            }
+
             default: {
                 break;
             }

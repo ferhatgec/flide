@@ -13,37 +13,42 @@
 #include "defs/flide_defs.hpp"
 
 enum class FlideTokens : const u8 {
-    Begin ,
-    End   ,
+    Begin        ,
+    End          ,
 
-    Label ,
-    Wait  ,
+    Label        ,
+    Wait         ,
 
-    New   ,
+    New          ,
 
-    Left  ,
-    Center,
-    Right ,
+    Left         ,
+    Center       ,
+    Right        ,
 
-    CenterXY,
+    CenterXY     ,
+
+    DisableCursor,
+
 
     Undef
 };
 
 static std::vector<std::string> keywords = {
-    "Begin"   ,
-    "End"     ,
+    "Begin"        ,
+    "End"          ,
 
-    "Label"   ,
-    "Wait"    ,
+    "Label"        ,
+    "Wait"         ,
 
-    "New"     ,
+    "New"          ,
 
-    "Left"    ,
-    "Center"  ,
-    "Right"   ,
+    "Left"         ,
+    "Center"       ,
+    "Right"        ,
 
-    "CenterXY"
+    "CenterXY"     ,
+
+    "DisableCursor"
 };
 
 class Flide_Parser {
