@@ -174,6 +174,10 @@ void Flide_Parser::Parse() noexcept {
                 disable_cursor(); break;
             }
 
+            case FlideTokens::EnableCursor: {
+                enable_cursor(); break;
+            }
+
             default: {
                 break;
             }

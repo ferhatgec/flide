@@ -10,6 +10,9 @@ Begin
     Center "An example of center aligned Label" Wait 1 New
     Right  "An example of right aligned Label" Wait 1 New
 
-    CenterXY "An example of center (xy) aligned Label" Wait 1 New
+    CenterXY "An example of center (xy) aligned Label"
+    EnableCursor
+    CenterXY "Cursor enabled."
 
+    Wait 1 New
 End

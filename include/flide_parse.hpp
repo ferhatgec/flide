@@ -28,7 +28,7 @@ enum class FlideTokens : const u8 {
     CenterXY     ,
 
     DisableCursor,
-
+    EnableCursor ,
 
     Undef
 };
@@ -48,7 +48,8 @@ static std::vector<std::string> keywords = {
 
     "CenterXY"     ,
 
-    "DisableCursor"
+    "DisableCursor",
+    "EnableCursor"
 };
 
 class Flide_Parser {
